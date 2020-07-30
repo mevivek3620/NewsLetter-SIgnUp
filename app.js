@@ -42,10 +42,11 @@ app.post("/",function(req,res)
         auth:"vivek:47e8575da7f06cc5acb488acfba3ff3e-us17"
     };
 
-    console.log(options.auth);
+    // console.log(options.auth);
 
     const request = https.request(url, options, function(response)
     {
+        // console.log(response.statusCode);
         if(response.statusCode === 200)
         {
             res.sendFile(__dirname+"/success.html");
@@ -64,7 +65,7 @@ app.post("/",function(req,res)
     request.end();
 });
 
-app.listen(3003,function()
+app.listen(process.env.PORT||3003,function()
 {
     console.log("Server is running on 3003..");
 });
